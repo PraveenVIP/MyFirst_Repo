@@ -5,40 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-        <py-config>
-                    packages = [
-                      "matplotlib","numpy"
-                    ]
-                    plugins = [
-                      "https://pyscript.net/latest/plugins/python/py_tutor.py"
-                    ]
-     </py-config>
+   <py-env>
+        - matplotlib
+    </py-env>
     <title>Praveen Website</title>
 </head>
 <body>
     <h1>Integrating a Jupyter Notebook in a Web Page</h1>
     <p>Some text.</p> 
 
-
-                <py-script>
-                    import matplotlib.pyplot as plt
-                    import matplotlib.tri as tri
-                    import numpy as np
-                   
-
-                    # make data
-                    x = np.linspace(0, 10, 100)
-                    y = 4 + 2 * np.sin(2 * x)
-
-                    # plot
-                    fig, ax = plt.subplots()
-
-                    ax.plot(x, y, linewidth=2.0)
-
-                    ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-                    ylim=(0, 8), yticks=np.arange(1, 8))
-
-                    display(fig, target="mpl")
-                </py-script>
+        <div id="matplotlib-lineplot"></div>
+        <py-script output="matplotlib-lineplot">
+            # Python Code
+           
+            # importing the matplotlib library
+            import matplotlib.pyplot as plt
+            fig, ax = plt.subplots()
+            # x axis
+            x = ["Python", "C++", "JavaScript", "Golang"]
+            # y axis
+            y = [10, 5, 9, 7]
+            plt.plot(x, y, marker='o', linestyle='-', color='b')
+            # Naming the x-label
+            plt.xlabel('Language')
+            # Naming the y-label
+            plt.ylabel('Score')
+            # Naming the title of the plot
+            plt.title('Language vs Score')
+            fig
+         </py-script>
 </body>
 </html>
